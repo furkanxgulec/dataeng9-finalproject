@@ -1,10 +1,25 @@
 # Setting up Airflow, Minio, Spark, and Sqoop
-
-## Pre-installation Steps for Airflow (including database setup and volumes creation)
 ```command
-spark, airflow, minioya ait kullanıcı şifreleri .env  dosylarının içindedir
-örnek /minio/.env
+docker-compose up -d ile docker ortamını başlattıktan sonra;
+data generator:
+-https://github.com/erkansirin78/data-generator
+adresinden data generatoru indirin  ve belirtilen yüklemeleri gerçekleştirin.
+
+tmdb_credits_to_s3.py, tmdb_movies_Tables_to_s3.py ve tmdb_5000_movies_and_credits 
+dosyalarını "spark_client:/dataops" konumuna kopyalayın.
+ 
+silver_credits_dag.py dosyasını  airflow-scheduler:/opt/airflow/dags konumuna kopyalayın.
+
+--spark, airflow, minioya ait kullanıcı şifreleri .env  dosylarının içindedir
+örnek--> /minio/.env
+
+data generator:
+-https://github.com/erkansirin78/data-generator
+
+--ayrıca kullandığım kodları bu dosyanın bulunduğu dizine yükledim
 ````
+## Pre-installation Steps for Airflow (including database setup and volumes creation)
+
 ```bash
 docker-compose up -d --build airflow-init
 ```
